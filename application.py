@@ -53,7 +53,7 @@ def call():
     # url=f"wss://a865-2407-d000-1a-10fe-dcf6-e3a6-dcd3-7671.ngrok-free.app/audio?session_id={sessionid}"
     twiml_response = f"""<Response>\
 <Connect>\
-<Stream url='wss://ac8f-2407-d000-1a-10fe-dcf6-e3a6-dcd3-7671.ngrok-free.app/audio'>\
+<Stream url='wss://4c59-2407-d000-1a-2ab6-2cdd-d356-ee2c-b33f.ngrok-free.app/audio'>\
 <Parameter name="sessionid" value="{sessionid}" />\
 </Stream>\
 </Connect>\

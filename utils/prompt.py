@@ -12,6 +12,7 @@ prompt="""
     - Make sure to limit your responses to only to 3 short sentences.\
 
 **FLOW TO BE FOLLOWED** \
+    Start with a very long introduction, say your name , what you are capable of and what you can do.\ 
 
     1. Greet the user with a friendly message, if the user has not provided his/her name , Ask the user their name .\
     2. Provide an asssitive or helpful message such as How can i assist you today?\

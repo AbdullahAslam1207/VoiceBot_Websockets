@@ -6,6 +6,7 @@ import json
 import base64
 import asyncio
 import os
+import spacy 
 
 
 load_dotenv()
@@ -14,7 +15,7 @@ ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_KEY")
 DEEPGRAM_KEY=os.getenv('DEEPGRAM_KEY')
 client = AsyncOpenAI(api_key=OPENAI_API_KEY)
 BUFFER_SIZE=4
-VOICE_ID = "K3fYnaeqI2NcQJrI4zMN"
+VOICE_ID =  "EXAVITQu4vr4xnSDxMaL"
 
 
 import json
@@ -51,6 +52,15 @@ def append_response_to_json( key, response):
 
     print(f"Appended response to key '{key}' in responses.json")
 
+
+#Interrupt handling 
+async def interrupt_handler(websocket, streamsid):
+    interrupt= { 
+            "event": "clear",
+            "streamSid": streamsid,
+            }
+    await websocket.send_text(json.dumps(interrupt))
+    print("Interrupted the streamsid")
 
 
 
@@ -239,6 +249,7 @@ async def Websocket(websocket):
             #                 query=""
 
             async def deepgram_receiver(deepgram_ws):
+                nonlocal streamsid
                 print('deepgram_receiver started')
                 query = ""
                 last_transcript = ""
@@ -260,7 +271,13 @@ async def Websocket(websocket):
                                 #save our response in the json file
                                 response={"role": "user", "content": query.strip()}
                                 append_response_to_json(sessionid, response)
-
+                                
+                                text= query.strip()
+                                text= text.split()
+                                
+                                print(text)
+                                if len(text)>2:
+                                    await interrupt_handler(websocket, streamsid)
                                 #to send our query to openai
                                 ans= await chat_completion(query.strip(), streamsid, websocket,sessionid)
                                 print(ans)
