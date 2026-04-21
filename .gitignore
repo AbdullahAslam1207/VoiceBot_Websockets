@@ -1,3 +1,4 @@
-.env
 .venv/
 responses.json
+config.bat
+node_modules

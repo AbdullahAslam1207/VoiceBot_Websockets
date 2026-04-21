@@ -25,7 +25,7 @@ DEEPGRAM_KEY=os.getenv('DEEPGRAM_KEY')
 
 app = FastAPI()
 
-# Enable CORS for all origins (*)
+# Enable CORS for all origins (*)###
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Allows all origins (Change this for security)
@@ -53,11 +53,12 @@ def call():
     # url=f"wss://a865-2407-d000-1a-10fe-dcf6-e3a6-dcd3-7671.ngrok-free.app/audio?session_id={sessionid}"
     twiml_response = f"""<Response>\
 <Connect>\
-<Stream url='wss://4c59-2407-d000-1a-2ab6-2cdd-d356-ee2c-b33f.ngrok-free.app/audio'>\
+<Stream url='wss://89d8-103-137-24-30.ngrok-free.app/audio'>\
 <Parameter name="sessionid" value="{sessionid}" />\
 </Stream>\
 </Connect>\
 </Response>"""
+    #####
     # response = VoiceResponse()
     # connect = response.connect()
     # connect.stream(url="wss://c912-2407-d000-1a-d22f-4497-cb3e-3653-bd04.ngrok-free.app/audio")

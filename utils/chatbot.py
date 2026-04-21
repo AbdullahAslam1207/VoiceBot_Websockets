@@ -11,7 +11,8 @@ import spacy
 
 load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-ELEVENLABS_API_KEY = os.getenv("ELEVENLABS_KEY")
+ELEVENLABS_API_KEY = os.getenv("API_KEY")
+print (ELEVENLABS_API_KEY)
 DEEPGRAM_KEY=os.getenv('DEEPGRAM_KEY')
 client = AsyncOpenAI(api_key=OPENAI_API_KEY)
 BUFFER_SIZE=4
